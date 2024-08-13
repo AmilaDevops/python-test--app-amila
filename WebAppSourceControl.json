@@ -12,7 +12,7 @@
       }
     },
     "packageBranch": {
-      "type": "string",
+      "type": "string"
     }
   },
   "variables": {
