@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appName": {
+      "type": "string"
+    },
+    "packageUri": {
+      "type": "string",
+      "metadata": {
+        "description": "The URL for the GitHub repository that contains the project to deploy."
+      }
+    },
+    "packageBranch": {
+      "type": "string",
+    }
+  },
+  "variables": {
+
+  },
+  "resources": [
+        {
+          "apiVersion": "2015-08-01",
+          "name": "[concat(parameters('appName'),'/web')]",
+          "type": "Microsoft.Web/sites/sourcecontrols",
+          "dependsOn": [],
+          "properties": {
+              "RepoUrl": "[parameters('packageUri')]",
+              "branch": "[parameters('packageBranch')]",
+              "publishRunbook": true,
+              "IsManualIntegration": true
+          }
+        }
+    ]
+}
